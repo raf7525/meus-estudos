@@ -14,13 +14,14 @@ def calcular_economia(numeros):
     return economia
 
 def main():
-    try:
-        while True:
-            n = int(sys.stdin.readline().strip())
-            numeros = [sys.stdin.readline().strip() for _ in range(n)]
-            print(calcular_economia(numeros))
-    except EOFError:
-        pass
+    for linha in sys.stdin:
+        linha = linha.strip()
+        if not linha.isdigit():  # Verifica se é um número válido
+            continue  # Ignora e tenta a próxima linha
+
+        n = int(linha)
+        numeros = [sys.stdin.readline().strip() for _ in range(n)]
+        print(calcular_economia(numeros))
 
 if __name__ == "__main__":
     main()
